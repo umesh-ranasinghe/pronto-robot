@@ -1,13 +1,13 @@
 import re, argparse
 
 def move_forward():
-  global position, debug_mode
+  global position
   position[0] += facing_direction[0]
   position[1] += facing_direction[1]
   if debug_mode: print(f"Forward {position}")
 
 def move_backward():
-  global position, debug_mode
+  global position
   position[0] -= facing_direction[0]
   position[1] -= facing_direction[1]
   if debug_mode: print(f"Backward {position}")
@@ -74,7 +74,7 @@ def parse_input_arguments():
     help='Navigation commands to robot in comma seperated format'
   )
   parser.add_argument(
-    '-d', '--debug', action='store_false', 
+    '-d', '--debug', action='store_true', 
     help='Enable debug output')
   args = parser.parse_args()
   global debug_mode
