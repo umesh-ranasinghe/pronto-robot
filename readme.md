@@ -33,3 +33,10 @@ To run the application from the command line, use the following command:
 
 ```bash
 python robot.py "F1,R1,B2,L1,B3"
+```
+
+To run the application in debug mode, use the following command:
+
+```bash
+python robot.py "F1,R1,B2,L1,B3" --debug
+```
