@@ -4,21 +4,21 @@ def move_forward():
   global position
   position[0] += facing_direction[0]
   position[1] += facing_direction[1]
-  if debug_mode: print(f"Forward {position}")
+  if debug_mode: print(f"\t\tForward {position}")
 
 def move_backward():
   global position
   position[0] -= facing_direction[0]
   position[1] -= facing_direction[1]
-  if debug_mode: print(f"Backward {position}")
+  if debug_mode: print(f"\t\tBackward {position}")
 
 def turn_left():
-  if debug_mode: print("Turning left")
+  if debug_mode: print("\t\tTurning left")
   global facing_direction
   facing_direction = [-facing_direction[1], facing_direction[0]]
 
 def turn_right():
-  if debug_mode: print("Turning right")
+  if debug_mode: print("\t\tTurning right")
   global facing_direction
   facing_direction = [facing_direction[1], -facing_direction[0]]
 
@@ -35,6 +35,7 @@ def validate_and_parse_commands(user_commands_str):
   valid_command = re.fullmatch(full_command_pattern, user_commands_str)        #  match the whole user command with the accepted pattern
     
   if valid_command:
+    if debug_mode: print('Command validated : {user_commands_str}')
     single_commands = re.findall(r'([FBLR])(\d+)', user_commands_str)
     parsed_commands = [(action_letter, int(action_count)) for action_letter, action_count in single_commands]        #  extract action and the number of times it should be executed
     return parsed_commands
@@ -43,7 +44,7 @@ def validate_and_parse_commands(user_commands_str):
 
 def execute_commands(commands):
   for command in commands:
-    print(command)
+    if debug_mode: print(f"\tExecuting : {command}")
     action = command[0]
     execution_count = command[1]
     
@@ -83,11 +84,9 @@ def parse_input_arguments():
   
 if __name__ == "__main__":
   user_commands_str = parse_input_arguments()
-  #user_commands_str = "F1,R5,B2,L9,B3"
   validated_commands = validate_and_parse_commands(user_commands_str)
   
   if validated_commands:
-    if debug_mode: print('ready to move. plan is {0}'.format(validated_commands))
     initialize()
     execute_commands(validated_commands)
     print(find_min_distance_to_return())
