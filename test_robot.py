@@ -1,5 +1,5 @@
 import subprocess
-from robot import validate_and_parse_commands
+from robot import validate_and_parse_commands, debug_mode
 
 def test_robot():
     result = subprocess.run(["python", "robot.py", "F1,R1,B2,L1,B3", "--debug"], capture_output=True, text=True)
