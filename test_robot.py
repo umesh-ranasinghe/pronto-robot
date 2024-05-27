@@ -7,4 +7,4 @@ def test_robot():
 
 def test_validate_and_parse_commands():
     debug_mode = False
-    assert test_validate_and_parse_commands("F1,R1,B2,L1,B3") == [('F', 1), ('R', 5), ('B', 2), ('L', 9), ('B', 3)]
+    assert validate_and_parse_commands("F1,R1,B2,L1,B3") == [('F', 1), ('R', 5), ('B', 2), ('L', 9), ('B', 3)]
