@@ -1,3 +1,5 @@
+import re
+
 def validate_user_commands(user_commands_str):
   is_valid_command = re.fullmatch('^[FBLR]\d+(,[FBLR]\d+)*$', user_commands_str)
   if is_valid_command:
