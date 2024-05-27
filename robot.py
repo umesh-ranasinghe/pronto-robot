@@ -1,4 +1,5 @@
-import re, argparse
+import re
+import argparse
 
 
 def move_forward():
@@ -44,7 +45,7 @@ def validate_and_parse_commands(user_commands_str):
     full_command_pattern = "^{0}(,{0})*$".format(single_command_pattern)
     valid_command = re.fullmatch(
         full_command_pattern, user_commands_str
-    )  #  match the whole user command with the accepted pattern
+    )  # match the whole user command with the accepted pattern
 
     if valid_command:
         if debug_mode:
@@ -53,7 +54,7 @@ def validate_and_parse_commands(user_commands_str):
         parsed_commands = [
             (action_letter, int(action_count))
             for action_letter, action_count in single_commands
-        ]  #  extract action and the number of times it should be executed
+        ]  # extract action and the number of times it should be executed
         return parsed_commands
     else:
         return None
@@ -67,7 +68,7 @@ def execute_commands(commands):
         execution_count = command[1]
 
         if action in ["L", "R"]:
-            execution_count = execution_count % 4  #  avoid full circle turns
+            execution_count = execution_count % 4  # avoid full circle turns
         for i in range(execution_count):
             actions[action]()
 
@@ -84,11 +85,11 @@ def find_min_distance_to_return():
 
 def parse_input_arguments():
     parser = argparse.ArgumentParser(
-        description="""This program receives a string of commands 
-    and will output the robot's distance from it's starting point.  
-    This distance will be the minimum amount of units the robot 
+        description="""This program receives a string of commands
+    and will output the robot's distance from it's starting point.
+    This distance will be the minimum amount of units the robot
     will need to traverse in order to get back to it's starting point.
-    
+
     Example command string: F1,R1,B2,L1,B3"""
     )
     parser.add_argument(
