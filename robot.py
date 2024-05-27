@@ -46,6 +46,8 @@ def execute_commands(commands):
     print(command)
     action = command[0]
     execution_count = command[1]
+    if action in ['L','R']:
+      execution_count = execution_count%4
     for i in range(execution_count):
       actions[action]()
 
@@ -56,7 +58,7 @@ def initialize():
 
 if __name__ == "__main__":
 #  user_commands_str = input("Enter instructions for robot :")
-  user_commands_str = "F1,R1,B2,L1,B3"
+  user_commands_str = "F1,R5,B2,L9,B3"
   validated_commands = validate_and_parse_commands(user_commands_str)
   if validated_commands:
     print('ready to move. plan is {0}'.format(validated_commands))
