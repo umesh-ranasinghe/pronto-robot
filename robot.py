@@ -1,16 +1,26 @@
 import re
 
 def move_forward():
-  print(f"Forward")
+  global position
+  position[0] += facing_direction[0]
+  position[1] += facing_direction[1]
+  print(f"Forward {position}")
 
 def move_backward():
-  print(f"Backward")
+  global position 
+  position[0] -= facing_direction[0]
+  position[1] -= facing_direction[1]
+  print(f"Backward {position}")
 
 def turn_left():
-  print(f"Turning left")
+  print("Turning left")
+  global facing_direction
+  facing_direction = [-facing_direction[1], facing_direction[0]]
 
 def turn_right():
-  print(f"Turning right")
+  print("Turning right")
+  global facing_direction
+  facing_direction = [facing_direction[1], -facing_direction[0]]
 
 actions = {
     'F': move_forward,
