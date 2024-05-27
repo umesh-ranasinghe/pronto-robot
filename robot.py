@@ -5,4 +5,4 @@ def initialize():
 
 if __name__ == "__main__":
   initialize()
-  print('current position : {0}'.format(position))
+  print(4)
