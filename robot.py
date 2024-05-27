@@ -4,21 +4,21 @@ def move_forward():
   global position
   position[0] += facing_direction[0]
   position[1] += facing_direction[1]
-  if debug_mode: print(f"\t\tForward {position}")
+  if debug_mode: print(f'\t\tForward {position}')
 
 def move_backward():
   global position
   position[0] -= facing_direction[0]
   position[1] -= facing_direction[1]
-  if debug_mode: print(f"\t\tBackward {position}")
+  if debug_mode: print(f'\t\tBackward {position}')
 
 def turn_left():
-  if debug_mode: print("\t\tTurning left")
+  if debug_mode: print('\t\tTurning left')
   global facing_direction
   facing_direction = [-facing_direction[1], facing_direction[0]]
 
 def turn_right():
-  if debug_mode: print("\t\tTurning right")
+  if debug_mode: print('\t\tTurning right')
   global facing_direction
   facing_direction = [facing_direction[1], -facing_direction[0]]
 
@@ -35,7 +35,7 @@ def validate_and_parse_commands(user_commands_str):
   valid_command = re.fullmatch(full_command_pattern, user_commands_str)        #  match the whole user command with the accepted pattern
     
   if valid_command:
-    if debug_mode: print('Command validated : {user_commands_str}')
+    if debug_mode: print(f'Command validated : {user_commands_str}')
     single_commands = re.findall(r'([FBLR])(\d+)', user_commands_str)
     parsed_commands = [(action_letter, int(action_count)) for action_letter, action_count in single_commands]        #  extract action and the number of times it should be executed
     return parsed_commands
@@ -72,7 +72,7 @@ def parse_input_arguments():
   )
   parser.add_argument(
     'command_string', type=str, 
-    help='Navigation commands to robot in comma seperated format'
+    help='Navigation commands in comma seperated format'
   )
   parser.add_argument(
     '-d', '--debug', action='store_true', 
