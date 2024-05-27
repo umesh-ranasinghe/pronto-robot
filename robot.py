@@ -51,7 +51,7 @@ if __name__ == "__main__":
   if validated_commands:
     print('ready to move. plan is {0}'.format(validated_commands))
     initialize()
-    execute_commands(valid_commands)
+    execute_commands(validated_commands)
   else:
     print('Invalid comamand : {}'.format(user_commands_str))
   print(4)
