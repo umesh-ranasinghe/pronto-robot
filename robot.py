@@ -1,24 +1,24 @@
 import re, argparse
 
 def move_forward():
-  global position
+  global position, debug_mode
   position[0] += facing_direction[0]
   position[1] += facing_direction[1]
-  print(f"Forward {position}")
+  if debug_mode: print(f"Forward {position}")
 
 def move_backward():
-  global position 
+  global position, debug_mode
   position[0] -= facing_direction[0]
   position[1] -= facing_direction[1]
-  print(f"Backward {position}")
+  if debug_mode: print(f"Backward {position}")
 
 def turn_left():
-  print("Turning left")
+  if debug_mode: print("Turning left")
   global facing_direction
   facing_direction = [-facing_direction[1], facing_direction[0]]
 
 def turn_right():
-  print("Turning right")
+  if debug_mode: print("Turning right")
   global facing_direction
   facing_direction = [facing_direction[1], -facing_direction[0]]
 
@@ -74,7 +74,7 @@ def parse_input_arguments():
     help='Navigation commands to robot in comma seperated format'
   )
   parser.add_argument(
-    '-d', '--debug', action='store_true', 
+    '-d', '--debug', action='store_false', 
     help='Enable debug output')
   args = parser.parse_args()
   global debug_mode
@@ -87,7 +87,7 @@ if __name__ == "__main__":
   validated_commands = validate_and_parse_commands(user_commands_str)
   
   if validated_commands:
-    print('ready to move. plan is {0}'.format(validated_commands))
+    if debug_mode: print('ready to move. plan is {0}'.format(validated_commands))
     initialize()
     execute_commands(validated_commands)
     print(find_min_distance_to_return())
